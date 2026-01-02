@@ -1,1 +1,161 @@
---maybe later
+--nIGHA STOP ITS JUST AI
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local PlayerGui = Player:WaitForChild("PlayerGui")
+
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "TradeControlPanel"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- Main Frame (Draggable)
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Size = UDim2.new(0, 400, 0, 250)
+MainFrame.Position = UDim2.new(0.5, -200, 0.5, -125)
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+MainFrame.BorderSizePixel = 0
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Selectable = true
+
+-- Title Bar
+local TitleBar = Instance.new("Frame")
+TitleBar.Name = "TitleBar"
+TitleBar.Size = UDim2.new(1, 0, 0, 30)
+TitleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
+TitleBar.BorderSizePixel = 0
+
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Name = "TitleLabel"
+TitleLabel.Size = UDim2.new(1, -40, 1, 0)
+TitleLabel.Position = UDim2.new(0, 10, 0, 0)
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.Text = "MM2 NERO TRADE SCRIPT︱NEW RELEASE 2026"
+TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleLabel.TextSize = 16
+TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+TitleLabel.Font = Enum.Font.GothamSemibold
+
+-- Close Button
+local CloseButton = Instance.new("TextButton")
+CloseButton.Name = "CloseButton"
+CloseButton.Size = UDim2.new(0, 30, 0, 30)
+CloseButton.Position = UDim2.new(1, -30, 0, 0)
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
+CloseButton.BorderSizePixel = 0
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.TextSize = 14
+
+-- Input Field
+local InputFrame = Instance.new("Frame")
+InputFrame.Name = "InputFrame"
+InputFrame.Size = UDim2.new(0, 300, 0, 40)
+InputFrame.Position = UDim2.new(0.5, -150, 0, 60)
+InputFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
+InputFrame.BorderSizePixel = 0
+
+local InputBox = Instance.new("TextBox")
+InputBox.Name = "InputBox"
+InputBox.Size = UDim2.new(1, -20, 1, -10)
+InputBox.Position = UDim2.new(0, 10, 0, 5)
+InputBox.BackgroundTransparency = 1
+InputBox.Text = ""
+InputBox.PlaceholderText = "Target Username"
+InputBox.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
+InputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+InputBox.TextSize = 14
+InputBox.ClearTextOnFocus = false
+InputBox.Font = Enum.Font.Gotham
+
+-- Freeze Trade Button
+local FreezeButton = Instance.new("TextButton")
+FreezeButton.Name = "FreezeButton"
+FreezeButton.Size = UDim2.new(0, 140, 0, 50)
+FreezeButton.Position = UDim2.new(0.5, -150, 0, 140)
+FreezeButton.BackgroundColor3 = Color3.fromRGB(12, 2, 2)
+FreezeButton.BorderSizePixel = 0
+FreezeButton.Text = "FREEZE TRADE"
+FreezeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+FreezeButton.TextSize = 14
+FreezeButton.Font = Enum.Font.GothamBold
+
+-- Force Accept Button
+local ForceButton = Instance.new("TextButton")
+ForceButton.Name = "ForceButton"
+ForceButton.Size = UDim2.new(0, 140, 0, 50)
+ForceButton.Position = UDim2.new(0.5, 10, 0, 140)
+ForceButton.BackgroundColor3 = Color3.fromRGB(205, 33, 33)
+ForceButton.BorderSizePixel = 0
+ForceButton.Text = "FORCE ACCEPT"
+ForceButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ForceButton.TextSize = 14
+ForceButton.Font = Enum.Font.GothamBold
+
+-- Assemble UI
+TitleBar.Parent = MainFrame
+TitleLabel.Parent = TitleBar
+CloseButton.Parent = TitleBar
+InputFrame.Parent = MainFrame
+InputBox.Parent = InputFrame
+FreezeButton.Parent = MainFrame
+ForceButton.Parent = MainFrame
+MainFrame.Parent = ScreenGui
+ScreenGui.Parent = PlayerGui
+
+-- Button Functions
+local function FreezeTrade(username)
+	if username == "" then
+		username = InputBox.PlaceholderText
+	end
+
+	print("Freezing trade for: " .. username)
+end
+
+local function ForceAccept(username)
+	if username == "" then
+		username = InputBox.PlaceholderText
+	end
+
+	print("Forcing accept for: " .. username)
+end
+
+-- Connect Events
+FreezeButton.MouseButton1Click:Connect(function()
+	FreezeTrade(InputBox.Text)
+end)
+
+ForceButton.MouseButton1Click:Connect(function()
+	ForceAccept(InputBox.Text)
+end)
+
+CloseButton.MouseButton1Click:Connect(function()
+	ScreenGui:Destroy()
+end)
+
+-- Add hover effects
+local function AddButtonEffect(button)
+	local originalColor = button.BackgroundColor3
+
+	button.MouseEnter:Connect(function()
+		button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(255, 255, 255), 0.2)
+	end)
+
+	button.MouseLeave:Connect(function()
+		button.BackgroundColor3 = originalColor
+	end)
+
+	button.MouseButton1Down:Connect(function()
+		button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(0, 0, 0), 0.3)
+	end)
+
+	button.MouseButton1Up:Connect(function()
+		button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(255, 255, 255), 0.2)
+	end)
+end
+
+AddButtonEffect(FreezeButton)
+AddButtonEffect(ForceButton)
+AddButtonEffect(CloseButton)
