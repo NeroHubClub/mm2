@@ -1,161 +1,431 @@
---nIGHA STOP ITS JUST AI
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local PlayerGui = Player:WaitForChild("PlayerGui")
+-- NERO KEY SYSTEM + MM2 TRADE SCRIPT
+-- Execute this in your Roblox executor
 
--- Create ScreenGui
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "TradeControlPanel"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+-- Configuration
+local KEY_SYSTEM_URL = "https://raw.githubusercontent.com/NeroHubClub/Key/refs/heads/main/Key"
+local CORRECT_KEY = "NEROSCRIPTS2026"
 
--- Main Frame (Draggable)
-local MainFrame = Instance.new("Frame")
-MainFrame.Name = "MainFrame"
-MainFrame.Size = UDim2.new(0, 400, 0, 250)
-MainFrame.Position = UDim2.new(0.5, -200, 0.5, -125)
-MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
-MainFrame.BorderSizePixel = 0
-MainFrame.Active = true
-MainFrame.Draggable = true
-MainFrame.Selectable = true
+-- Function to load your MM2 Trade Script
+local function loadMM2TradeScript()
+    print("✅ Key verified! Loading MM2 Trade Script...")
+    
+    -- YOUR MM2 TRADE SCRIPT GOES HERE
+    local Players = game:GetService("Players")
+    local Player = Players.LocalPlayer
+    local PlayerGui = Player:WaitForChild("PlayerGui")
 
--- Title Bar
-local TitleBar = Instance.new("Frame")
-TitleBar.Name = "TitleBar"
-TitleBar.Size = UDim2.new(1, 0, 0, 30)
-TitleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
-TitleBar.BorderSizePixel = 0
+    -- Create ScreenGui
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Name = "TradeControlPanel"
+    ScreenGui.ResetOnSpawn = false
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-local TitleLabel = Instance.new("TextLabel")
-TitleLabel.Name = "TitleLabel"
-TitleLabel.Size = UDim2.new(1, -40, 1, 0)
-TitleLabel.Position = UDim2.new(0, 10, 0, 0)
-TitleLabel.BackgroundTransparency = 1
-TitleLabel.Text = "MM2 NERO TRADE SCRIPT︱NEW RELEASE 2026"
-TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TitleLabel.TextSize = 16
-TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
-TitleLabel.Font = Enum.Font.GothamSemibold
+    -- Main Frame (Draggable)
+    local MainFrame = Instance.new("Frame")
+    MainFrame.Name = "MainFrame"
+    MainFrame.Size = UDim2.new(0, 400, 0, 250)
+    MainFrame.Position = UDim2.new(0.5, -200, 0.5, -125)
+    MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+    MainFrame.BorderSizePixel = 0
+    MainFrame.Active = true
+    MainFrame.Draggable = true
+    MainFrame.Selectable = true
 
--- Close Button
-local CloseButton = Instance.new("TextButton")
-CloseButton.Name = "CloseButton"
-CloseButton.Size = UDim2.new(0, 30, 0, 30)
-CloseButton.Position = UDim2.new(1, -30, 0, 0)
-CloseButton.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
-CloseButton.BorderSizePixel = 0
-CloseButton.Text = "X"
-CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CloseButton.TextSize = 14
+    -- Title Bar
+    local TitleBar = Instance.new("Frame")
+    TitleBar.Name = "TitleBar"
+    TitleBar.Size = UDim2.new(1, 0, 0, 30)
+    TitleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
+    TitleBar.BorderSizePixel = 0
 
--- Input Field
-local InputFrame = Instance.new("Frame")
-InputFrame.Name = "InputFrame"
-InputFrame.Size = UDim2.new(0, 300, 0, 40)
-InputFrame.Position = UDim2.new(0.5, -150, 0, 60)
-InputFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-InputFrame.BorderSizePixel = 0
+    local TitleLabel = Instance.new("TextLabel")
+    TitleLabel.Name = "TitleLabel"
+    TitleLabel.Size = UDim2.new(1, -40, 1, 0)
+    TitleLabel.Position = UDim2.new(0, 10, 0, 0)
+    TitleLabel.BackgroundTransparency = 1
+    TitleLabel.Text = "MM2 NERO TRADE SCRIPT︱NEW RELEASE 2026"
+    TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TitleLabel.TextSize = 16
+    TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TitleLabel.Font = Enum.Font.GothamSemibold
 
-local InputBox = Instance.new("TextBox")
-InputBox.Name = "InputBox"
-InputBox.Size = UDim2.new(1, -20, 1, -10)
-InputBox.Position = UDim2.new(0, 10, 0, 5)
-InputBox.BackgroundTransparency = 1
-InputBox.Text = ""
-InputBox.PlaceholderText = "Target Username"
-InputBox.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
-InputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-InputBox.TextSize = 14
-InputBox.ClearTextOnFocus = false
-InputBox.Font = Enum.Font.Gotham
+    -- Close Button
+    local CloseButton = Instance.new("TextButton")
+    CloseButton.Name = "CloseButton"
+    CloseButton.Size = UDim2.new(0, 30, 0, 30)
+    CloseButton.Position = UDim2.new(1, -30, 0, 0)
+    CloseButton.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
+    CloseButton.BorderSizePixel = 0
+    CloseButton.Text = "X"
+    CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    CloseButton.TextSize = 14
 
--- Freeze Trade Button
-local FreezeButton = Instance.new("TextButton")
-FreezeButton.Name = "FreezeButton"
-FreezeButton.Size = UDim2.new(0, 140, 0, 50)
-FreezeButton.Position = UDim2.new(0.5, -150, 0, 140)
-FreezeButton.BackgroundColor3 = Color3.fromRGB(12, 2, 2)
-FreezeButton.BorderSizePixel = 0
-FreezeButton.Text = "FREEZE TRADE"
-FreezeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-FreezeButton.TextSize = 14
-FreezeButton.Font = Enum.Font.GothamBold
+    -- Input Field
+    local InputFrame = Instance.new("Frame")
+    InputFrame.Name = "InputFrame"
+    InputFrame.Size = UDim2.new(0, 300, 0, 40)
+    InputFrame.Position = UDim2.new(0.5, -150, 0, 60)
+    InputFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
+    InputFrame.BorderSizePixel = 0
 
--- Force Accept Button
-local ForceButton = Instance.new("TextButton")
-ForceButton.Name = "ForceButton"
-ForceButton.Size = UDim2.new(0, 140, 0, 50)
-ForceButton.Position = UDim2.new(0.5, 10, 0, 140)
-ForceButton.BackgroundColor3 = Color3.fromRGB(205, 33, 33)
-ForceButton.BorderSizePixel = 0
-ForceButton.Text = "FORCE ACCEPT"
-ForceButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-ForceButton.TextSize = 14
-ForceButton.Font = Enum.Font.GothamBold
+    local InputBox = Instance.new("TextBox")
+    InputBox.Name = "InputBox"
+    InputBox.Size = UDim2.new(1, -20, 1, -10)
+    InputBox.Position = UDim2.new(0, 10, 0, 5)
+    InputBox.BackgroundTransparency = 1
+    InputBox.Text = ""
+    InputBox.PlaceholderText = "Target Username"
+    InputBox.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
+    InputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    InputBox.TextSize = 14
+    InputBox.ClearTextOnFocus = false
+    InputBox.Font = Enum.Font.Gotham
 
--- Assemble UI
-TitleBar.Parent = MainFrame
-TitleLabel.Parent = TitleBar
-CloseButton.Parent = TitleBar
-InputFrame.Parent = MainFrame
-InputBox.Parent = InputFrame
-FreezeButton.Parent = MainFrame
-ForceButton.Parent = MainFrame
-MainFrame.Parent = ScreenGui
-ScreenGui.Parent = PlayerGui
+    -- Freeze Trade Button
+    local FreezeButton = Instance.new("TextButton")
+    FreezeButton.Name = "FreezeButton"
+    FreezeButton.Size = UDim2.new(0, 140, 0, 50)
+    FreezeButton.Position = UDim2.new(0.5, -150, 0, 140)
+    FreezeButton.BackgroundColor3 = Color3.fromRGB(12, 2, 2)
+    FreezeButton.BorderSizePixel = 0
+    FreezeButton.Text = "FREEZE TRADE"
+    FreezeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    FreezeButton.TextSize = 14
+    FreezeButton.Font = Enum.Font.GothamBold
 
--- Button Functions
-local function FreezeTrade(username)
-	if username == "" then
-		username = InputBox.PlaceholderText
-	end
+    -- Force Accept Button
+    local ForceButton = Instance.new("TextButton")
+    ForceButton.Name = "ForceButton"
+    ForceButton.Size = UDim2.new(0, 140, 0, 50)
+    ForceButton.Position = UDim2.new(0.5, 10, 0, 140)
+    ForceButton.BackgroundColor3 = Color3.fromRGB(205, 33, 33)
+    ForceButton.BorderSizePixel = 0
+    ForceButton.Text = "FORCE ACCEPT"
+    ForceButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ForceButton.TextSize = 14
+    ForceButton.Font = Enum.Font.GothamBold
 
-	print("Freezing trade for: " .. username)
+    -- Assemble UI
+    TitleBar.Parent = MainFrame
+    TitleLabel.Parent = TitleBar
+    CloseButton.Parent = TitleBar
+    InputFrame.Parent = MainFrame
+    InputBox.Parent = InputFrame
+    FreezeButton.Parent = MainFrame
+    ForceButton.Parent = MainFrame
+    MainFrame.Parent = ScreenGui
+    ScreenGui.Parent = PlayerGui
+
+    -- Button Functions
+    local function FreezeTrade(username)
+        if username == "" then
+            username = InputBox.PlaceholderText
+        end
+
+        print("Freezing trade for: " .. username)
+        -- Add your freeze trade logic here
+    end
+
+    local function ForceAccept(username)
+        if username == "" then
+            username = InputBox.PlaceholderText
+        end
+
+        print("Forcing accept for: " .. username)
+        -- Add your force accept logic here
+    end
+
+    -- Connect Events
+    FreezeButton.MouseButton1Click:Connect(function()
+        FreezeTrade(InputBox.Text)
+    end)
+
+    ForceButton.MouseButton1Click:Connect(function()
+        ForceAccept(InputBox.Text)
+    end)
+
+    CloseButton.MouseButton1Click:Connect(function()
+        ScreenGui:Destroy()
+    end)
+
+    -- Add hover effects
+    local function AddButtonEffect(button)
+        local originalColor = button.BackgroundColor3
+
+        button.MouseEnter:Connect(function()
+            button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(255, 255, 255), 0.2)
+        end)
+
+        button.MouseLeave:Connect(function()
+            button.BackgroundColor3 = originalColor
+        end)
+
+        button.MouseButton1Down:Connect(function()
+            button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(0, 0, 0), 0.3)
+        end)
+
+        button.MouseButton1Up:Connect(function()
+            button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(255, 255, 255), 0.2)
+        end)
+    end
+
+    AddButtonEffect(FreezeButton)
+    AddButtonEffect(ForceButton)
+    AddButtonEffect(CloseButton)
+    
+    print("✅ MM2 Trade Script loaded successfully!")
 end
 
-local function ForceAccept(username)
-	if username == "" then
-		username = InputBox.PlaceholderText
-	end
+-- Main Key System UI
+local function createKeySystemUI()
+    local CoreGui = game:GetService("CoreGui")
+    local TweenService = game:GetService("TweenService")
+    
+    -- Cleanup existing UI
+    local existingUI = CoreGui:FindFirstChild("NeroKeySystem")
+    if existingUI then
+        existingUI:Destroy()
+        task.wait()
+    end
 
-	print("Forcing accept for: " .. username)
+    -- Create ScreenGui
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Name = "NeroKeySystem"
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    ScreenGui.Parent = CoreGui
+
+    -- Main Frame
+    local MainFrame = Instance.new("Frame")
+    MainFrame.Name = "MainFrame"
+    MainFrame.Size = UDim2.new(0, 400, 0, 350)
+    MainFrame.Position = UDim2.new(0.5, -200, 0.5, -175)
+    MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+    MainFrame.BorderSizePixel = 0
+    MainFrame.ClipsDescendants = true
+    MainFrame.Parent = ScreenGui
+
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 12)
+    UICorner.Parent = MainFrame
+
+    -- Title
+    local Title = Instance.new("TextLabel")
+    Title.Name = "Title"
+    Title.Size = UDim2.new(1, -40, 0, 40)
+    Title.Position = UDim2.new(0, 20, 0, 20)
+    Title.BackgroundTransparency = 1
+    Title.Text = "Nero Script"
+    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Title.TextSize = 28
+    Title.Font = Enum.Font.GothamBold
+    Title.Parent = MainFrame
+
+    -- Subtitle
+    local Subtitle = Instance.new("TextLabel")
+    Subtitle.Name = "Subtitle"
+    Subtitle.Size = UDim2.new(1, -40, 0, 20)
+    Subtitle.Position = UDim2.new(0, 20, 0, 70)
+    Subtitle.BackgroundTransparency = 1
+    Subtitle.Text = "Please get the key!"
+    Subtitle.TextColor3 = Color3.fromRGB(180, 180, 180)
+    Subtitle.TextSize = 16
+    Subtitle.Font = Enum.Font.Gotham
+    Subtitle.Parent = MainFrame
+
+    -- Get Key Button
+    local GetKeyButton = Instance.new("TextButton")
+    GetKeyButton.Name = "GetKeyButton"
+    GetKeyButton.Size = UDim2.new(1, -80, 0, 45)
+    GetKeyButton.Position = UDim2.new(0, 40, 0, 110)
+    GetKeyButton.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
+    GetKeyButton.AutoButtonColor = false
+    GetKeyButton.Text = "GET KEY"
+    GetKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    GetKeyButton.TextSize = 18
+    GetKeyButton.Font = Enum.Font.GothamBold
+    GetKeyButton.Parent = MainFrame
+
+    local ButtonCorner = Instance.new("UICorner")
+    ButtonCorner.CornerRadius = UDim.new(0, 8)
+    ButtonCorner.Parent = GetKeyButton
+
+    -- Key Input Label
+    local KeyLabel = Instance.new("TextLabel")
+    KeyLabel.Name = "KeyLabel"
+    KeyLabel.Size = UDim2.new(1, -40, 0, 20)
+    KeyLabel.Position = UDim2.new(0, 20, 0, 180)
+    KeyLabel.BackgroundTransparency = 1
+    KeyLabel.Text = "Please put the key!"
+    KeyLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
+    KeyLabel.TextSize = 16
+    KeyLabel.Font = Enum.Font.Gotham
+    KeyLabel.Parent = MainFrame
+
+    -- Key Input Box
+    local KeyInput = Instance.new("TextBox")
+    KeyInput.Name = "KeyInput"
+    KeyInput.Size = UDim2.new(1, -80, 0, 45)
+    KeyInput.Position = UDim2.new(0, 40, 0, 210)
+    KeyInput.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+    KeyInput.PlaceholderText = "Enter key here..."
+    KeyInput.PlaceholderColor3 = Color3.fromRGB(100, 100, 110)
+    KeyInput.Text = ""
+    KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+    KeyInput.TextSize = 18
+    KeyInput.Font = Enum.Font.Gotham
+    KeyInput.ClearTextOnFocus = false
+    KeyInput.Parent = MainFrame
+
+    local InputCorner = Instance.new("UICorner")
+    InputCorner.CornerRadius = UDim.new(0, 8)
+    InputCorner.Parent = KeyInput
+
+    -- Check Key Button
+    local CheckKeyButton = Instance.new("TextButton")
+    CheckKeyButton.Name = "CheckKeyButton"
+    CheckKeyButton.Size = UDim2.new(1, -80, 0, 45)
+    CheckKeyButton.Position = UDim2.new(0, 40, 0, 270)
+    CheckKeyButton.BackgroundColor3 = Color3.fromRGB(65, 120, 200)
+    CheckKeyButton.AutoButtonColor = false
+    CheckKeyButton.Text = "CHECK KEY"
+    CheckKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    CheckKeyButton.TextSize = 18
+    CheckKeyButton.Font = Enum.Font.GothamBold
+    CheckKeyButton.Parent = MainFrame
+
+    local CheckButtonCorner = Instance.new("UICorner")
+    CheckButtonCorner.CornerRadius = UDim.new(0, 8)
+    CheckButtonCorner.Parent = CheckKeyButton
+
+    -- Status Message
+    local StatusLabel = Instance.new("TextLabel")
+    StatusLabel.Name = "StatusLabel"
+    StatusLabel.Size = UDim2.new(1, -80, 0, 20)
+    StatusLabel.Position = UDim2.new(0, 40, 0, 330)
+    StatusLabel.BackgroundTransparency = 1
+    StatusLabel.Text = ""
+    StatusLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
+    StatusLabel.TextSize = 14
+    StatusLabel.Font = Enum.Font.Gotham
+    StatusLabel.TextTransparency = 1
+    StatusLabel.Parent = MainFrame
+
+    -- Button Animations
+    local function animateButtonHover(button, hover)
+        local targetColor
+        if button == GetKeyButton then
+            targetColor = hover and Color3.fromRGB(55, 55, 65) or Color3.fromRGB(45, 45, 55)
+        elseif button == CheckKeyButton then
+            targetColor = hover and Color3.fromRGB(80, 140, 220) or Color3.fromRGB(65, 120, 200)
+        end
+        TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = targetColor}):Play()
+    end
+
+    -- Copy Link Function
+    local function copyToClipboard(text)
+        local executor = identifyexecutor and identifyexecutor() or "Unknown"
+        
+        if executor:find("Synapse") or executor:find("ScriptWare") then
+            setclipboard(text)
+            return true
+        elseif executor:find("Krnl") or executor:find("Fluxus") then
+            writeclipboard(text)
+            return true
+        else
+            pcall(function()
+                setclipboard(text)
+            end)
+        end
+        return false
+    end
+
+    -- Show Status Message
+    local function showStatus(message, isError)
+        StatusLabel.Text = message
+        StatusLabel.TextColor3 = isError and Color3.fromRGB(255, 100, 100) or Color3.fromRGB(100, 255, 100)
+        
+        TweenService:Create(StatusLabel, TweenInfo.new(0.3), {TextTransparency = 0}):Play()
+        
+        if not isError then
+            task.wait(2)
+            TweenService:Create(StatusLabel, TweenInfo.new(0.3), {TextTransparency = 1}):Play()
+        end
+    end
+
+    -- Check Key Function
+    local function checkKey(inputKey)
+        return inputKey:upper():gsub("%s+", "") == CORRECT_KEY
+    end
+
+    -- Verify Key Function
+    local function verifyKey()
+        local inputKey = KeyInput.Text
+        
+        if inputKey == "" then
+            showStatus("Please enter a key first", true)
+            return false
+        end
+        
+        if checkKey(inputKey) then
+            showStatus("✓ Key accepted! Loading MM2 Script...", false)
+            
+            -- Close key system UI
+            task.wait(1.5)
+            ScreenGui:Destroy()
+            
+            -- Load MM2 Trade Script
+            loadMM2TradeScript()
+            return true
+        else
+            showStatus("Invalid key. Please get the correct key.", true)
+            return false
+        end
+    end
+
+    -- Get Key Button Events
+    GetKeyButton.MouseEnter:Connect(function()
+        animateButtonHover(GetKeyButton, true)
+    end)
+
+    GetKeyButton.MouseLeave:Connect(function()
+        animateButtonHover(GetKeyButton, false)
+    end)
+
+    GetKeyButton.MouseButton1Click:Connect(function()
+        if copyToClipboard("http://pastepeso.net/NeroScriptKey") then
+            showStatus("Link copied! Please go to browser and paste to get the key", false)
+        else
+            showStatus("Please visit: http://pastepeso.net/NeroScriptKey", false)
+        end
+    end)
+
+    -- Check Key Button Events
+    CheckKeyButton.MouseEnter:Connect(function()
+        animateButtonHover(CheckKeyButton, true)
+    end)
+
+    CheckKeyButton.MouseLeave:Connect(function()
+        animateButtonHover(CheckKeyButton, false)
+    end)
+
+    CheckKeyButton.MouseButton1Click:Connect(function()
+        verifyKey()
+    end)
+
+    -- Key Input Submit (Enter key)
+    KeyInput.FocusLost:Connect(function(enterPressed)
+        if enterPressed then
+            verifyKey()
+        end
+    end)
+
+    -- Focus on input box
+    task.wait(0.5)
+    KeyInput:CaptureFocus()
+    
+    return ScreenGui
 end
 
--- Connect Events
-FreezeButton.MouseButton1Click:Connect(function()
-	FreezeTrade(InputBox.Text)
-end)
-
-ForceButton.MouseButton1Click:Connect(function()
-	ForceAccept(InputBox.Text)
-end)
-
-CloseButton.MouseButton1Click:Connect(function()
-	ScreenGui:Destroy()
-end)
-
--- Add hover effects
-local function AddButtonEffect(button)
-	local originalColor = button.BackgroundColor3
-
-	button.MouseEnter:Connect(function()
-		button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(255, 255, 255), 0.2)
-	end)
-
-	button.MouseLeave:Connect(function()
-		button.BackgroundColor3 = originalColor
-	end)
-
-	button.MouseButton1Down:Connect(function()
-		button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(0, 0, 0), 0.3)
-	end)
-
-	button.MouseButton1Up:Connect(function()
-		button.BackgroundColor3 = originalColor:Lerp(Color3.fromRGB(255, 255, 255), 0.2)
-	end)
-end
-
-AddButtonEffect(FreezeButton)
-AddButtonEffect(ForceButton)
-AddButtonEffect(CloseButton)
+-- Main Execution
+print("🔑 Loading Nero Key System...")
+createKeySystemUI()
