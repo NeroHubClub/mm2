@@ -88,7 +88,7 @@ WindUI:Popup({
         {
             Title = "Copy Discord",
             Callback = function()
-                setclipboard("https://discord.gg/cnUAk7uc3n")
+                setclipboard("https://discord.gg/PJJ65Kymwh")
                 WindUI:Notify({
                     Title = "Discord Copied!",
                     Content = "Discord invite copied to clipboard!",
@@ -117,7 +117,7 @@ repeat task.wait() until popupClosed
 -- ============================================
 local Window = WindUI:CreateWindow({
     Title = CreateGradientText("Nero Script | Murder Mystery 2", Colors.Red, Colors.Green),
-    Author = "by discord.gg/SnXQCYzGjx ",
+    Author = "by https://discord.gg/PJJ65Kymwh ",
     Folder = "Kuni Hb",
     Icon = "skull",
     NewElements = true,
@@ -2887,7 +2887,7 @@ InfoTab:Button({
     Color = Colors.DarkPurple,
     Justify = "Center",
     Callback = function()
-        setclipboard("https://discord.gg/SnXQCYzGjx")
+        setclipboard("https://discord.gg/PJJ65Kymwh")
         WindUI:Notify({
             Title = "Discord",
             Content = "Invite copied to clipboard!",
